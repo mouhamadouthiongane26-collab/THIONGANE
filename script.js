@@ -1,5 +1,5 @@
 // Script principal du site gaindé
-// Gère : menu mobile, année dynamique, simulation d'envoi du formulaire.
+// Gère : menu mobile, sous-menus, année dynamique, simulation d'envoi du formulaire.
 
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector(".menu-toggle");
@@ -17,6 +17,28 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", () => {
         mainNav.classList.remove("open");
         menuToggle.setAttribute("aria-expanded", "false");
+
+        mainNav.querySelectorAll(".nav-item").forEach((item) => {
+          item.classList.remove("dropdown-open");
+        });
+
+        mainNav.querySelectorAll(".dropdown-toggle").forEach((toggle) => {
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    });
+
+    // Gestion des sous-menus
+    mainNav.querySelectorAll(".nav-item.has-dropdown").forEach((item) => {
+      const toggle = item.querySelector(".dropdown-toggle");
+      if (!toggle) {
+        return;
+      }
+
+      toggle.addEventListener("click", (event) => {
+        event.preventDefault();
+        const isOpen = item.classList.toggle("dropdown-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
       });
     });
   }
@@ -38,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Validation HTML5 basique
       if (!form.checkValidity()) {
         feedback.textContent = "Merci de remplir correctement tous les champs.";
-        feedback.style.color = "#ffb3b3";
+        feedback.style.color = "#ffd3ad";
         return;
       }
 
@@ -46,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const nom = formData.get("nom");
 
       feedback.textContent = `Merci ${nom}, votre demande a bien été envoyée (simulation).`;
-      feedback.style.color = "#9fe7b1";
+      feedback.style.color = "#9bf2bf";
       form.reset();
     });
   }
