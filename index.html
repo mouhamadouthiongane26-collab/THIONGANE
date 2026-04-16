@@ -30,39 +30,51 @@
         <nav id="menu-principal" class="main-nav" aria-label="Navigation principale">
           <ul>
             <li class="nav-item has-dropdown">
-              <a href="#accueil">Accueil</a>
-              <button class="dropdown-toggle" aria-expanded="false" aria-label="Ouvrir le menu Accueil">▾</button>
+              <div class="nav-link-row">
+                <a href="#accueil">Accueil</a>
+                <button class="dropdown-toggle" aria-expanded="false" aria-label="Ouvrir le menu Accueil">▾</button>
+              </div>
               <ul class="dropdown-menu" aria-label="Sous-menu Accueil">
-                <li><a href="#accueil">Présentation</a></li>
-                <li><a href="#engagements">Nos engagements</a></li>
-                <li><a href="#contact">Demander un devis</a></li>
+                <li><a href="#accueil">Présentation rapide</a></li>
+                <li><a href="#engagements">Nos engagements qualité</a></li>
+                <li><a href="#devis-express">Demande express</a></li>
               </ul>
             </li>
+
             <li class="nav-item has-dropdown">
-              <a href="#services">Services</a>
-              <button class="dropdown-toggle" aria-expanded="false" aria-label="Ouvrir le menu Services">▾</button>
+              <div class="nav-link-row">
+                <a href="#services">Services</a>
+                <button class="dropdown-toggle" aria-expanded="false" aria-label="Ouvrir le menu Services">▾</button>
+              </div>
               <ul class="dropdown-menu" aria-label="Sous-menu Services">
-                <li><a href="#services">Gardiennage</a></li>
-                <li><a href="#services">Sécurité événementielle</a></li>
-                <li><a href="#services">Surveillance & protection</a></li>
+                <li><a href="#gardiennage">Gardiennage</a></li>
+                <li><a href="#securite-evenementielle">Sécurité événementielle</a></li>
+                <li><a href="#surveillance">Surveillance</a></li>
+                <li><a href="#protection-rapprochee">Protection rapprochée</a></li>
               </ul>
             </li>
+
             <li class="nav-item has-dropdown">
-              <a href="#apropos">À propos</a>
-              <button class="dropdown-toggle" aria-expanded="false" aria-label="Ouvrir le menu À propos">▾</button>
+              <div class="nav-link-row">
+                <a href="#apropos">À propos</a>
+                <button class="dropdown-toggle" aria-expanded="false" aria-label="Ouvrir le menu À propos">▾</button>
+              </div>
               <ul class="dropdown-menu" aria-label="Sous-menu À propos">
                 <li><a href="#apropos">Qui sommes-nous ?</a></li>
-                <li><a href="#engagements">Nos valeurs</a></li>
-                <li><a href="#contact">Recrutement</a></li>
+                <li><a href="#valeurs">Nos valeurs</a></li>
+                <li><a href="#engagements">Méthodologie terrain</a></li>
               </ul>
             </li>
+
             <li class="nav-item has-dropdown">
-              <a href="#contact">Contact</a>
-              <button class="dropdown-toggle" aria-expanded="false" aria-label="Ouvrir le menu Contact">▾</button>
+              <div class="nav-link-row">
+                <a href="#contact">Contact</a>
+                <button class="dropdown-toggle" aria-expanded="false" aria-label="Ouvrir le menu Contact">▾</button>
+              </div>
               <ul class="dropdown-menu" aria-label="Sous-menu Contact">
-                <li><a href="#contact">Prendre rendez-vous</a></li>
-                <li><a href="#contact">Service client</a></li>
-                <li><a href="#contact">Support urgence 24/7</a></li>
+                <li><a href="#contact">Coordonnées</a></li>
+                <li><a href="#devis-express">Devis express 24h</a></li>
+                <li><a href="#assistance">Assistance urgence 24/7</a></li>
               </ul>
             </li>
           </ul>
@@ -96,7 +108,7 @@
           </p>
 
           <div class="cards-grid">
-            <article class="card">
+            <article id="gardiennage" class="card">
               <div class="card-icon" aria-hidden="true">🛡️</div>
               <h3>Gardiennage</h3>
               <p>
@@ -105,7 +117,7 @@
               </p>
             </article>
 
-            <article class="card">
+            <article id="securite-evenementielle" class="card">
               <div class="card-icon" aria-hidden="true">🎫</div>
               <h3>Sécurité événementielle</h3>
               <p>
@@ -115,7 +127,7 @@
               </p>
             </article>
 
-            <article class="card">
+            <article id="surveillance" class="card">
               <div class="card-icon" aria-hidden="true">📹</div>
               <h3>Surveillance</h3>
               <p>
@@ -125,7 +137,7 @@
               </p>
             </article>
 
-            <article class="card">
+            <article id="protection-rapprochee" class="card">
               <div class="card-icon" aria-hidden="true">👔</div>
               <h3>Protection rapprochée</h3>
               <p>
@@ -182,7 +194,7 @@
               proposer des dispositifs efficaces, adaptés à la réalité de chaque client.
             </p>
           </div>
-          <aside class="values-box" aria-label="Valeurs de l'entreprise">
+          <aside id="valeurs" class="values-box" aria-label="Valeurs de l'entreprise">
             <h3>Nos valeurs</h3>
             <ul>
               <li>Rigueur</li>
@@ -208,6 +220,8 @@
               <li><strong>Téléphone :</strong> +33 1 89 00 00 00</li>
               <li><strong>Email :</strong> contact@gainde-securite.fr</li>
               <li><strong>Adresse :</strong> 12 Avenue de la Protection, 75008 Paris</li>
+              <li id="devis-express"><strong>Devis express :</strong> réponse sous 24h</li>
+              <li id="assistance"><strong>Assistance urgence :</strong> disponible 24/7</li>
             </ul>
           </div>
 

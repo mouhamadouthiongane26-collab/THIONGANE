@@ -4,12 +4,27 @@
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.querySelector(".menu-toggle");
   const mainNav = document.querySelector(".main-nav");
+  const navItems = mainNav ? mainNav.querySelectorAll(".nav-item.has-dropdown") : [];
+
+  const closeAllDropdowns = () => {
+    navItems.forEach((item) => {
+      item.classList.remove("dropdown-open");
+      const toggle = item.querySelector(".dropdown-toggle");
+      if (toggle) {
+        toggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  };
 
   // Ouverture / fermeture du menu mobile
   if (menuToggle && mainNav) {
     menuToggle.addEventListener("click", () => {
       const isOpen = mainNav.classList.toggle("open");
       menuToggle.setAttribute("aria-expanded", String(isOpen));
+
+      if (!isOpen) {
+        closeAllDropdowns();
+      }
     });
 
     // Fermer le menu au clic sur un lien
@@ -17,19 +32,12 @@ document.addEventListener("DOMContentLoaded", () => {
       link.addEventListener("click", () => {
         mainNav.classList.remove("open");
         menuToggle.setAttribute("aria-expanded", "false");
-
-        mainNav.querySelectorAll(".nav-item").forEach((item) => {
-          item.classList.remove("dropdown-open");
-        });
-
-        mainNav.querySelectorAll(".dropdown-toggle").forEach((toggle) => {
-          toggle.setAttribute("aria-expanded", "false");
-        });
+        closeAllDropdowns();
       });
     });
 
     // Gestion des sous-menus
-    mainNav.querySelectorAll(".nav-item.has-dropdown").forEach((item) => {
+    navItems.forEach((item) => {
       const toggle = item.querySelector(".dropdown-toggle");
       if (!toggle) {
         return;
@@ -37,9 +45,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
       toggle.addEventListener("click", (event) => {
         event.preventDefault();
-        const isOpen = item.classList.toggle("dropdown-open");
-        toggle.setAttribute("aria-expanded", String(isOpen));
+        const isOpening = !item.classList.contains("dropdown-open");
+        closeAllDropdowns();
+        item.classList.toggle("dropdown-open", isOpening);
+        toggle.setAttribute("aria-expanded", String(isOpening));
       });
+    });
+
+    // Fermer les sous-menus avec Echap
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        closeAllDropdowns();
+      }
+    });
+
+    // Fermer si clic en dehors de la navigation
+    document.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof Element)) {
+        return;
+      }
+
+      if (!mainNav.contains(target)) {
+        closeAllDropdowns();
+      }
     });
   }
 

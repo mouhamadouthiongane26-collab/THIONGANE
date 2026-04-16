@@ -4,16 +4,17 @@
 */
 
 :root {
-  --color-bg: #112a1b;
-  --color-bg-alt: #1b4028;
+  --color-bg: #0f311d;
+  --color-bg-alt: #1b4a2c;
+  --color-surface: #245f38;
   --color-primary: #f39c12;
-  --color-primary-light: #f7c948;
-  --color-accent: #2fbf71;
-  --color-text: #fff8e8;
-  --color-muted: #f7deaa;
-  --color-card: #245433;
-  --color-border: #f4bc53;
-  --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.25);
+  --color-primary-light: #ffcb47;
+  --color-accent: #33c46f;
+  --color-text: #fff7e4;
+  --color-muted: #f9dfaa;
+  --color-card: #23633a;
+  --color-border: #f2ba53;
+  --shadow-soft: 0 12px 28px rgba(5, 20, 10, 0.35);
   --radius: 14px;
 }
 
@@ -28,7 +29,7 @@ html {
 body {
   margin: 0;
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
-  background: linear-gradient(180deg, var(--color-bg), #0b1d12 80%);
+  background: linear-gradient(180deg, var(--color-bg), #092013 80%);
   color: var(--color-text);
   line-height: 1.6;
 }
@@ -75,8 +76,8 @@ h2 {
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(10px);
-  background: rgba(14, 38, 22, 0.94);
-  border-bottom: 1px solid rgba(247, 201, 72, 0.4);
+  background: rgba(11, 40, 24, 0.95);
+  border-bottom: 1px solid rgba(255, 203, 71, 0.45);
 }
 
 .nav-wrapper {
@@ -87,7 +88,7 @@ h2 {
 }
 
 .logo {
-  color: #fff8e8;
+  color: var(--color-text);
   text-decoration: none;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -95,7 +96,7 @@ h2 {
   font-size: 1.1rem;
 }
 
-.main-nav ul {
+.main-nav > ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -105,8 +106,12 @@ h2 {
 
 .nav-item {
   position: relative;
+}
+
+.nav-link-row {
   display: flex;
   align-items: center;
+  gap: 0.15rem;
 }
 
 .main-nav a {
@@ -118,43 +123,54 @@ h2 {
 }
 
 .main-nav a:hover,
-.main-nav a:focus-visible {
-  background: rgba(247, 201, 72, 0.16);
+.main-nav a:focus-visible,
+.dropdown-toggle:hover,
+.dropdown-toggle:focus-visible {
+  background: rgba(255, 203, 71, 0.2);
 }
 
 .dropdown-toggle {
   border: 0;
-  background: transparent;
   color: var(--color-primary-light);
+  background: transparent;
   cursor: pointer;
-  padding: 0.45rem 0.25rem;
-  font-size: 0.9rem;
+  border-radius: 7px;
+  padding: 0.35rem 0.4rem;
+  line-height: 1;
+  transition: transform 0.15s ease;
+}
+
+.nav-item.dropdown-open .dropdown-toggle {
+  transform: rotate(180deg);
 }
 
 .dropdown-menu {
   position: absolute;
-  top: calc(100% + 0.35rem);
+  top: calc(100% + 0.45rem);
   left: 0;
-  min-width: 230px;
-  background: #1d4a2d;
+  min-width: 260px;
+  background: linear-gradient(180deg, #285e38, #234f31);
   border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border-radius: 11px;
   box-shadow: var(--shadow-soft);
+  padding: 0.45rem;
   display: none;
-  padding: 0.4rem;
-  flex-direction: column;
-  gap: 0.15rem;
+}
+
+.dropdown-menu li {
+  list-style: none;
 }
 
 .dropdown-menu a {
   display: block;
-  color: #ffefca;
+  color: #ffefcb;
+  padding: 0.45rem 0.6rem;
 }
 
 .nav-item:hover .dropdown-menu,
 .nav-item:focus-within .dropdown-menu,
 .nav-item.dropdown-open .dropdown-menu {
-  display: flex;
+  display: block;
 }
 
 /* Bouton burger mobile */
@@ -171,19 +187,19 @@ h2 {
   display: block;
   width: 24px;
   height: 2px;
-  background: #fff8e8;
+  background: var(--color-text);
 }
 
 /* Hero */
 .hero {
   padding-top: 7rem;
   background:
-    radial-gradient(circle at 10% 15%, rgba(47, 191, 113, 0.25), transparent 40%),
+    radial-gradient(circle at 10% 15%, rgba(51, 196, 111, 0.28), transparent 40%),
     radial-gradient(circle at 80% 15%, rgba(243, 156, 18, 0.28), transparent 35%);
 }
 
 .surtitle {
-  color: #f7c948;
+  color: var(--color-primary-light);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.83rem;
@@ -194,7 +210,7 @@ h2 {
   font-size: 1.15rem;
   font-weight: 700;
   margin: 1.1rem 0;
-  color: #ffeab2;
+  color: #ffe9b1;
 }
 
 .intro {
@@ -215,7 +231,7 @@ h2 {
 }
 
 .btn-primary {
-  color: #2f1e03;
+  color: #382300;
   background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
   box-shadow: var(--shadow-soft);
 }
@@ -237,6 +253,7 @@ h2 {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1.2rem;
+  scroll-margin-top: 6.5rem;
 }
 
 .card-icon {
@@ -273,10 +290,11 @@ h2 {
 }
 
 .values-box {
-  background: #225033;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1rem 1.1rem;
+  scroll-margin-top: 6.5rem;
 }
 
 .values-box ul {
@@ -300,10 +318,11 @@ h2 {
 .contact-details li {
   margin-bottom: 0.55rem;
   color: var(--color-muted);
+  scroll-margin-top: 6.5rem;
 }
 
 .contact-form {
-  background: #1f4a2e;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1.2rem;
@@ -319,17 +338,17 @@ h2 {
 .contact-form textarea {
   width: 100%;
   margin-bottom: 0.9rem;
-  border: 1px solid #f3b751;
-  background: #143320;
-  color: #fff8e8;
+  border: 1px solid #f4bc53;
+  background: #133421;
+  color: var(--color-text);
   border-radius: 9px;
   padding: 0.72rem;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  outline: 2px solid #f7c948;
-  border-color: #f7c948;
+  outline: 2px solid var(--color-primary-light);
+  border-color: var(--color-primary-light);
 }
 
 .form-feedback {
@@ -340,7 +359,7 @@ h2 {
 
 /* Pied de page */
 .site-footer {
-  border-top: 1px solid rgba(247, 201, 72, 0.35);
+  border-top: 1px solid rgba(255, 203, 71, 0.35);
   padding: 1.1rem 0;
   text-align: center;
   color: var(--color-muted);
@@ -366,7 +385,7 @@ h2 {
     top: 76px;
     right: 4%;
     left: 4%;
-    background: #1a4028;
+    background: #1e4e30;
     border: 1px solid var(--color-border);
     border-radius: 12px;
     padding: 0.6rem;
@@ -377,29 +396,16 @@ h2 {
     display: block;
   }
 
-  .main-nav ul {
+  .main-nav > ul {
     flex-direction: column;
-    gap: 0.2rem;
-  }
-
-  .nav-item {
-    flex-wrap: wrap;
-  }
-
-  .main-nav a {
-    display: block;
-  }
-
-  .dropdown-toggle {
-    margin-left: auto;
+    gap: 0.25rem;
   }
 
   .dropdown-menu {
     position: static;
-    min-width: unset;
-    width: 100%;
-    margin-top: 0.2rem;
-    background: #245634;
+    min-width: 100%;
+    margin-top: 0.25rem;
+    background: #245d37;
   }
 
   .nav-item:not(.dropdown-open) .dropdown-menu {
